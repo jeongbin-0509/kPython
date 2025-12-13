@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한글 파이썬 개발 환경</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="editor-section">
+            <h2>코드 편집기</h2>
+            <textarea id="code-editor" placeholder="여기에 한글 파이썬 코드를 작성하세요..."></textarea>
+            <button id="run-button">실행</button>
+        </div>
+        <div class="console-section">
+            <h2>콘솔</h2>
+            <div id="output"></div>
+            <input type="text" id="input-field" placeholder="입력 값..." style="display: none;">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+</body>
+</html>

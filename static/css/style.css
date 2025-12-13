@@ -1,0 +1,80 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.editor-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+}
+
+.editor-section h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+#code-editor {
+    flex: 1;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: none;
+    outline: none;
+}
+
+#run-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#run-button:hover {
+    background-color: #005aa3;
+}
+
+.console-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.console-section h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+#output {
+    flex: 1;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 10px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+}
+
+#input-field {
+    margin-top: 10px;
+    padding: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
