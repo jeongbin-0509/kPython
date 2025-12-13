@@ -264,3 +264,66 @@ button.danger:hover{ filter: brightness(1.05); }
 
 a{ color: var(--accent-2); text-decoration: none; }
 a:hover{ text-decoration: underline; }
+
+.fab{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+
+  border: 1px solid var(--line);
+  background: rgba(45,45,45,.92);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.fab:hover{ filter: brightness(1.08); }
+.fab:active{ transform: translateY(1px); }
+
+.fab-dot{
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.08);
+}
+
+/* 작은 화면에서 키보드/콘솔 가리지 않게 살짝 올림 */
+@media (max-width: 520px){
+  .fab{ bottom: 90px; }
+}
+
+/* =========================================================
+   Themes (override only CSS variables)
+   Apply by: document.documentElement.dataset.theme = "..."
+   ========================================================= */
+
+/* 기본값은 이미 :root 에 있으므로 여기서는 추가 테마만 정의 */
+
+/* Light */
+:root[data-theme="divapink"]{
+  /* Backgrounds */
+  --bg: #140b12;          /* 아주 어두운 자주-블랙 */
+  --surface: #1c0f18;     /* 패널 */
+  --surface-2: #26121f;   /* 툴바/입력 */
+
+  /* Lines */
+  --line: #3a1a2d;
+
+  /* Text */
+  --text: #f6eaf1;
+  --muted: #c7a6b8;
+
+  /* Accents */
+  --accent: #ff4fa3;     /* 메인 버튼 (Diva Pink) */
+  --accent-2: #ff79bd;   /* 커서/포커스/포인트 */
+  --danger: #ff5c7a;
+
+  /* Shadow */
+  --shadow: 0 10px 30px rgba(255,79,163,.25);
+}

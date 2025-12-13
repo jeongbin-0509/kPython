@@ -201,3 +201,51 @@ window.addEventListener("load", () => {
   boot();
   updateLineNumbers();
 });
+
+/* Diva Pink theme 추가 */
+(function () {
+  const THEMES = ["vscode", "divapink"]; // ← 디바핑크 하나만 추가
+  const STORAGE_KEY = "hangpy.theme";
+
+  function applyTheme(theme) {
+    const root = document.documentElement;
+
+    if (!theme || theme === "vscode") {
+      root.removeAttribute("data-theme");
+      localStorage.setItem(STORAGE_KEY, "vscode");
+      return;
+    }
+
+    root.setAttribute("data-theme", theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+
+  function getCurrentTheme() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved && THEMES.includes(saved)) return saved;
+    return "vscode";
+  }
+
+  function nextTheme(current) {
+    const i = THEMES.indexOf(current);
+    return THEMES[(i + 1) % THEMES.length];
+  }
+
+  applyTheme(getCurrentTheme());
+
+  function initFab() {
+    const fab = document.getElementById("themeFab");
+    if (!fab) return;
+
+    fab.addEventListener("click", () => {
+      const cur = getCurrentTheme();
+      applyTheme(nextTheme(cur));
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFab);
+  } else {
+    initFab();
+  }
+})();
