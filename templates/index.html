@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HangPy (Pyodide)</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <script defer src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>HangPy — Pyodide Web IDE</h1>
+    <div id="status" class="status">Initializing…</div>
+  </header>
+
+  <div class="wrap">
+    <!-- Editor -->
+    <section class="panel">
+      <div class="toolbar">
+        <button id="btnRun" class="primary" disabled>실행</button>
+        <button id="btnHelp">도움말</button>
+        <button id="btnNew">새로</button>
+      </div>
+
+      <div class="editor-wrap">
+        <pre id="gutter" class="gutter"></pre>
+        <textarea id="editor" class="codearea" spellcheck="false"
+          placeholder="여기에 한글파이썬 코드를 작성하세요.&#10;예)&#10;이름 = 입력('이름: ')&#10;출력('안녕', 이름)"></textarea>
+      </div>
+    </section>
+
+    <!-- Console -->
+    <section class="panel">
+      <div class="toolbar">
+        <button id="btnClearOut">출력 지우기</button>
+        <button id="btnReset" class="danger">Pyodide 리셋</button>
+      </div>
+
+      <textarea id="output" class="codearea" readonly placeholder="여기가 출력 콘솔입니다."></textarea>
+
+      <!-- Console Input (JS가 input() 대기 처리) -->
+      <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+        <input id="consoleInput" type="text" style="flex:1; padding:10px; border-radius:10px; border:1px solid #232838; background:#0b0f17; color:#e8ebf0;"
+               placeholder="여기에 입력하고 Enter…" />
+        <button id="btnSend">전송</button>
+      </div>
+      <div class="status" style="margin-top:8px;">
+        input() 호출 시 이 입력창이 활성화됩니다.
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    브라우저에서 Pyodide로 실행됩니다. 입력/출력은 페이지 콘솔 UI에서 처리합니다.
+  </footer>
+
+  <script src="/static/javascript/script.js"></script>
+</body>
+</html>
