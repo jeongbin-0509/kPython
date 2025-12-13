@@ -29,6 +29,7 @@ const outEl = document.getElementById("output");
 const btnRun = document.getElementById("btnRun");
 const btnHelp = document.getElementById("btnHelp");
 const btnNew = document.getElementById("btnNew");
+const btnExample = document.getElementById("btnExample");
 const btnClearOut = document.getElementById("btnClearOut");
 const btnReset = document.getElementById("btnReset");
 
@@ -189,6 +190,12 @@ btnNew.addEventListener("click", () => {
 
 btnHelp.addEventListener("click", () => {
   editor.value += (editor.value.endsWith("\n") ? "" : "\n") + "도움말()\n";
+  updateLineNumbers();
+});
+
+btnExample.addEventListener("click", () => {
+  const exampleCode = "출력(\"HangPy 준비 완료!\")\n이름 = 입력(\"이름: \")\n출력(\"안녕,\", 이름)\n도움말()\n";
+  editor.value += (editor.value.endsWith("\n") ? "" : "\n") + exampleCode;
   updateLineNumbers();
 });
 
