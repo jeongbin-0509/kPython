@@ -22,24 +22,31 @@
   <div class="wrap">
     <!-- Editor -->
     <section class="panel">
-      <div class="toolbar">
-        <button id="btnRun" class="primary" disabled>실행</button>
-        <button id="btnHelp">도움말</button>
-        <button id="btnNew">새로</button>
+      <div class="panel-header">
+        <h3>코드 편집기</h3>
+        <div class="toolbar">
+          <button id="btnRun" class="primary" disabled>실행</button>
+          <button id="btnHelp">도움말</button>
+          <button id="btnNew">새로</button>
+          <button id="btnExample">예시</button>
+        </div>
       </div>
 
       <div class="editor-wrap">
         <pre id="gutter" class="gutter"></pre>
         <textarea id="editor" class="codearea" spellcheck="false"
-          placeholder="여기에 한글파이썬 코드를 작성하세요.&#10;예)&#10;이름 = 입력('이름: ')&#10;출력('안녕', 이름)"></textarea>
+          placeholder="여기에 한글파이썬 코드를 작성하세요.&#10;예:&#10;이름 = 입력('이름: ')&#10;출력('안녕', 이름)"></textarea>
       </div>
     </section>
 
     <!-- Console -->
     <section class="panel">
-      <div class="toolbar">
-        <button id="btnClearOut">출력 지우기</button>
-        <button id="btnReset" class="danger">Pyodide 리셋</button>
+      <div class="panel-header">
+        <h3>콘솔</h3>
+        <div class="toolbar">
+          <button id="btnClearOut">출력 지우기</button>
+          <button id="btnReset" class="danger">Pyodide 리셋</button>
+        </div>
       </div>
 
       <textarea id="output" class="codearea" readonly placeholder="여기가 출력 콘솔입니다."></textarea>
