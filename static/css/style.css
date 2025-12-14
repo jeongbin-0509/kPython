@@ -391,3 +391,11 @@ a:hover{ text-decoration: underline; }
 
   --shadow: 0 10px 30px rgba(255,79,163,.25);
 }
+
+/* .kpy 전용 툴바: 살짝 구분 */
+.kpy-toolbar{
+  margin-top: -2px;     /* 위 툴바와 간격 최소화 */
+  margin-bottom: 8px;   /* 에디터와는 약간 띄움 */
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  gap: 10px;
+}
