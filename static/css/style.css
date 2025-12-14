@@ -320,3 +320,82 @@ button.danger:hover {
 
 a{ color: var(--accent-2); text-decoration: none; }
 a:hover{ text-decoration: underline; }
+
+
+/* =========================================================
+   Diva Pink Theme (main color: diva pink)
+   ========================================================= */
+:root[data-theme="divapink"]{
+  /* Backgrounds */
+  --bg: #140b12;          /* 아주 어두운 자주-블랙 */
+  --surface: #1c0f18;     /* 패널 */
+  --surface-2: #26121f;   /* 툴바/입력 */
+
+  /* Lines */
+  --line: #3a1a2d;
+
+  /* Text */
+  --text: #f6eaf1;
+  --muted: #c7a6b8;
+
+  /* Accents */
+  --accent: #ff4fa3;     /* 메인 버튼 (Diva Pink) */
+  --accent-2: #ff79bd;   /* 커서/포커스/포인트 */
+  --danger: #ff5c7a;
+
+  /* Shadow */
+  --shadow: 0 10px 30px rgba(255,79,163,.25);
+}
+/* ===== Theme FAB (force apply) ===== */
+#themeFab.fab{
+  position: fixed !important;
+  right: 18px !important;
+  bottom: 18px !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 999px !important;
+  display: grid !important;
+  place-items: center !important;
+  z-index: 99999 !important;
+
+  border: 1px solid var(--line) !important;
+  background: var(--surface-2) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+#themeFab.fab:hover{ filter: brightness(1.08); }
+#themeFab.fab:active{ transform: translateY(1px); }
+
+#themeFab .fab-dot{
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 999px !important;
+  background: var(--accent-2) !important; /* 테마 바뀌면 여기 색이 바로 바뀜 */
+  box-shadow: 0 0 0 3px rgba(255,255,255,.08);
+}
+
+/* ===== Diva Pink Theme ===== */
+:root[data-theme="divapink"]{
+  --bg: #140b12;
+  --surface: #1c0f18;
+  --surface-2: #26121f;
+  --line: #3a1a2d;
+
+  --text: #f6eaf1;
+  --muted: #c7a6b8;
+
+  --accent: #ff4fa3;
+  --accent-2: #ff79bd;
+  --danger: #ff5c7a;
+
+  --shadow: 0 10px 30px rgba(255,79,163,.25);
+}
+
+/* .kpy 전용 툴바: 살짝 구분 */
+.kpy-toolbar{
+  margin-top: -2px;     /* 위 툴바와 간격 최소화 */
+  margin-bottom: 8px;   /* 에디터와는 약간 띄움 */
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  gap: 10px;
+}

@@ -254,3 +254,98 @@ window.addEventListener("load", () => {
     initFab();
   }
 })();
+
+/* =========================================================
+   .kpy Save / Load (plain text)
+   ========================================================= */
+(function () {
+  function qs(id) { return document.getElementById(id); }
+
+  function downloadTextFile(filename, text) {
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    URL.revokeObjectURL(url);
+  }
+
+  function suggestName() {
+    const d = new Date();
+    const pad = (n) => String(n).padStart(2, "0");
+    const name = `hangpy_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}.kpy`;
+    return name;
+  }
+
+  function initKpy() {
+    const editor = qs("editor");
+    const out = qs("output");
+    const btnSave = qs("btnSaveKpy");
+    const btnLoad = qs("btnLoadKpy");
+    const fileInput = qs("fileKpy");
+
+    if (!editor || !btnSave || !btnLoad || !fileInput) return;
+
+    // 저장
+    btnSave.addEventListener("click", () => {
+      const filename = prompt("파일 이름을 입력하세요 (.kpy는 자동으로 붙습니다)", suggestName());
+      if (!filename) return;
+
+      const safe = filename.toLowerCase().endsWith(".kpy") ? filename : (filename + ".kpy");
+      downloadTextFile(safe, editor.value);
+      if (out) out.value += `\n[저장됨] ${safe}\n`;
+    });
+
+    // 불러오기 버튼 -> 파일 선택창
+    btnLoad.addEventListener("click", () => fileInput.click());
+
+    // 파일 선택 후 읽기
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+
+      // 확장자 체크(엄격)
+      if (!file.name.toLowerCase().endsWith(".kpy")) {
+        alert(".kpy 파일만 불러올 수 있습니다.");
+        fileInput.value = "";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const text = String(reader.result ?? "");
+
+        editor.value = text;
+
+        // 만약 줄번호 갱신 함수가 있다면 호출(있을 수도/없을 수도)
+        if (typeof window.updateGutter === "function") {
+          window.updateGutter();
+        } else {
+          // 또는 기존 코드에서 쓰는 함수명이 다르면 여기만 맞춰 바꾸면 됩니다.
+          // (예: renderGutterLines(), syncGutter(), refreshGutter() 등)
+        }
+
+        if (out) out.value += `\n[불러옴] ${file.name}\n`;
+        fileInput.value = "";
+      };
+
+      reader.onerror = () => {
+        alert("파일을 읽는 중 오류가 발생했습니다.");
+        fileInput.value = "";
+      };
+
+      reader.readAsText(file, "utf-8");
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initKpy);
+  } else {
+    initKpy();
+  }
+})();
