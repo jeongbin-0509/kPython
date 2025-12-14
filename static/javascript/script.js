@@ -119,7 +119,6 @@ builtins.input = _hangpy_input
 `출력("HangPy 준비 완료!")
 이름 = 입력("이름: ")
 출력("안녕,", 이름)
-도움말()
 `;
     }
 
@@ -139,7 +138,6 @@ function indent(code) {
   return code.split("\n").map(line => "  " + line).join("\n");
 }
 
-// 아주 실용적인 수준의 자동 변환:
 //  - '입력(' 또는 'input(' 호출을 await로 바꿔준다.
 //  - 이미 await가 붙은 건 건드리지 않는다.
 function autoAwaitInput(code) {
